@@ -514,39 +514,8 @@ def single_stock_analysis(data_fetcher, pattern_recognition, chart_generator,
         5. Click "Analyze Patterns" to begin
         
         **Ready to analyze? Configure your settings in the sidebar and click the analyze button!**
-        """)
-                       
-        with st.expander("📋 Deployment Instructions"):
-            st.markdown("""
-            **🚀 Quick Deployment Guide:**
-            
-            1. **Download Files:** Get both ZIP and requirements.txt files above
-            2. **Extract:** Unzip the complete project package  
-            3. **Install Dependencies:** `pip install -r requirements.txt`
-            4. **Run Locally:** `streamlit run app.py`
-            5. **Cloud Deploy:** Upload to Streamlit Cloud, Heroku, or Replit
-            
-            **📦 Package Contains:**
-            - Complete source code (all Python modules)
-            - Professional trading algorithms & pattern recognition
-            - Portfolio management & options analysis tools
-            - Real-time alert system & advanced backtesting
-            - Export functionality & interactive charts
-            - Ready-to-deploy configuration files
-            - Professional-grade risk management tools
-            
-            **🔧 Platform Compatibility:**
-            - Streamlit Cloud (recommended)
-            - Heroku, Railway, Render
-            - Replit, CodeSandbox
-            - Local development environment
-            
-            **💡 Customization Notes:**
-            - All modules are well-documented
-            - Pattern recognition algorithms are modular
-            - Easy to add new patterns or modify existing ones
-            - Professional-grade codebase suitable for enhancement
-            """)
+        """)                 
+       
 
 def market_scanner_interface(market_scanner, pattern_recognition):
     """Market scanner interface"""
