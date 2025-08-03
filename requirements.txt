@@ -1,0 +1,28 @@
+# Professional Trading Analysis Platform - Production Requirements
+# Compatible with Streamlit Cloud, Replit, and other deployment platforms
+
+# Core framework
+streamlit>=1.28.0
+
+# Data processing and analysis
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Financial data source
+yfinance>=0.2.18
+
+# Interactive charting
+plotly>=5.15.0
+
+# Scientific computing for advanced analytics
+scipy>=1.11.0
+
+# Timezone handling for market hours
+pytz>=2023.3
+
+# Excel export functionality (optional but recommended)
+openpyxl>=3.1.0
+xlsxwriter>=3.1.0
+
+# Note: Install with: pip install -r deployment_requirements.txt
+# For Streamlit Cloud deployment, ensure this file is in your repository root
