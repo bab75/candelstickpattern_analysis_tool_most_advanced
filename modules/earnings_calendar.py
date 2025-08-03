@@ -55,25 +55,66 @@ class EarningsCalendar:
             'Energy': ['XOM', 'CVX', 'COP', 'EOG', 'SLB']
         }
         
-    def get_upcoming_earnings(self, days_ahead: int = 30) -> List[EarningsEvent]:
+    def get_upcoming_earnings(self, days_ahead: int = 60) -> List[EarningsEvent]:
         """Get upcoming earnings events"""
         try:
             # In production, this would connect to earnings calendar APIs
-            # For demo, we'll create realistic upcoming earnings
+            # For demo, we'll create realistic upcoming earnings for full 60-day period
             
             upcoming_events = []
             base_date = datetime.now()
             
-            # Create demo earnings events for the next 30 days
+            # Create demo earnings events for the next 60 days
             demo_earnings = [
-                ('AAPL', 'Apple Inc.', 7, 1.52, None, 'Technology', False),
-                ('MSFT', 'Microsoft Corp.', 10, 2.78, None, 'Technology', False),
-                ('GOOGL', 'Alphabet Inc.', 14, 1.45, None, 'Technology', True),
-                ('TSLA', 'Tesla Inc.', 21, 0.85, None, 'Consumer', True),
-                ('NVDA', 'NVIDIA Corp.', 25, 3.25, None, 'Technology', False),
+                # Week 1 (1-7 days)
                 ('JPM', 'JPMorgan Chase', 3, 3.15, None, 'Finance', True),
                 ('JNJ', 'Johnson & Johnson', 5, 2.42, None, 'Healthcare', False),
-                ('AMZN', 'Amazon.com Inc.', 18, 0.75, None, 'Consumer', True)
+                ('AAPL', 'Apple Inc.', 7, 1.52, None, 'Technology', False),
+                
+                # Week 2 (8-14 days)
+                ('MSFT', 'Microsoft Corp.', 10, 2.78, None, 'Technology', False),
+                ('BAC', 'Bank of America', 12, 0.85, None, 'Finance', True),
+                ('GOOGL', 'Alphabet Inc.', 14, 1.45, None, 'Technology', True),
+                
+                # Week 3 (15-21 days)
+                ('PFE', 'Pfizer Inc.', 16, 1.35, None, 'Healthcare', False),
+                ('AMZN', 'Amazon.com Inc.', 18, 0.75, None, 'Consumer', True),
+                ('WFC', 'Wells Fargo', 19, 1.25, None, 'Finance', True),
+                ('TSLA', 'Tesla Inc.', 21, 0.85, None, 'Consumer', True),
+                
+                # Week 4 (22-28 days)
+                ('GS', 'Goldman Sachs', 23, 8.45, None, 'Finance', False),
+                ('NVDA', 'NVIDIA Corp.', 25, 3.25, None, 'Technology', False),
+                ('UNH', 'UnitedHealth Group', 26, 5.75, None, 'Healthcare', False),
+                ('HD', 'The Home Depot', 28, 3.85, None, 'Consumer', False),
+                
+                # Week 5 (29-35 days)
+                ('META', 'Meta Platforms', 30, 2.95, None, 'Technology', True),
+                ('XOM', 'Exxon Mobil', 32, 1.95, None, 'Energy', False),
+                ('ABBV', 'AbbVie Inc.', 33, 2.85, None, 'Healthcare', False),
+                ('NKE', 'Nike Inc.', 35, 0.95, None, 'Consumer', True),
+                
+                # Week 6 (36-42 days)
+                ('CVX', 'Chevron Corp.', 37, 2.45, None, 'Energy', False),
+                ('MS', 'Morgan Stanley', 39, 1.85, None, 'Finance', True),
+                ('TMO', 'Thermo Fisher Scientific', 40, 4.25, None, 'Healthcare', False),
+                ('SBUX', 'Starbucks Corp.', 42, 0.75, None, 'Consumer', False),
+                
+                # Week 7 (43-49 days)
+                ('COP', 'ConocoPhillips', 44, 1.75, None, 'Energy', True),
+                ('IBM', 'International Business Machines', 46, 1.95, None, 'Technology', False),
+                ('KO', 'The Coca-Cola Company', 47, 0.65, None, 'Consumer', False),
+                ('V', 'Visa Inc.', 49, 1.85, None, 'Finance', False),
+                
+                # Week 8 (50-56 days)
+                ('EOG', 'EOG Resources', 51, 1.35, None, 'Energy', True),
+                ('INTC', 'Intel Corp.', 53, 0.45, None, 'Technology', True),
+                ('PG', 'Procter & Gamble', 54, 1.45, None, 'Consumer', False),
+                ('SLB', 'Schlumberger', 56, 0.85, None, 'Energy', False),
+                
+                # Week 9 (57-60 days)
+                ('ORCL', 'Oracle Corp.', 58, 1.25, None, 'Technology', False),
+                ('MCD', 'McDonald\'s Corp.', 60, 2.85, None, 'Consumer', False)
             ]
             
             for symbol, name, days_out, eps_est, eps_actual, sector, pre_market in demo_earnings:
@@ -447,7 +488,7 @@ def earnings_calendar_interface():
         st.subheader("📊 Sector Earnings Overview")
         
         # Show earnings by sector
-        upcoming_earnings = calendar.get_upcoming_earnings(30)
+        upcoming_earnings = calendar.get_upcoming_earnings(60)
         
         if upcoming_earnings:
             # Group by sector
