@@ -315,11 +315,8 @@ def earnings_calendar_interface():
     st.header("📅 Earnings Calendar & Analysis")
     st.markdown("**Track upcoming earnings and analyze their potential market impact**")
     
-    # Initialize calendar
-    if 'earnings_calendar' not in st.session_state:
-        st.session_state.earnings_calendar = EarningsCalendar()
-    
-    calendar = st.session_state.earnings_calendar
+    # Initialize calendar (clear cache to ensure fresh data)
+    calendar = EarningsCalendar()
     
     # Tabs for different views
     tab1, tab2, tab3 = st.tabs(["📅 Upcoming Earnings", "🔍 Individual Analysis", "📊 Sector Overview"])
@@ -327,10 +324,13 @@ def earnings_calendar_interface():
     with tab1:
         st.subheader("Upcoming Earnings Events")
         
-        days_filter = st.selectbox("Show earnings for:", [7, 14, 30, 60], index=1, format_func=lambda x: f"Next {x} days")
+        days_filter = st.selectbox("Show earnings for:", [7, 14, 30, 60], index=3, format_func=lambda x: f"Next {x} days", key="earnings_days_filter")
         
         with st.spinner("Loading earnings calendar..."):
             upcoming_earnings = calendar.get_upcoming_earnings(days_filter)
+        
+        # Debug information
+        st.info(f"📊 Found {len(upcoming_earnings)} earnings events for the next {days_filter} days")
         
         if upcoming_earnings:
             # Create earnings table
@@ -350,6 +350,9 @@ def earnings_calendar_interface():
                 })
             
             df_earnings = pd.DataFrame(earnings_data)
+            
+            # Show total count
+            st.markdown(f"**Total Earnings Events: {len(df_earnings)}**")
             st.dataframe(df_earnings, use_container_width=True)
             
             # Highlight this week's earnings
