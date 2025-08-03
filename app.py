@@ -515,47 +515,7 @@ def single_stock_analysis(data_fetcher, pattern_recognition, chart_generator,
         
         **Ready to analyze? Configure your settings in the sidebar and click the analyze button!**
         """)
-        
-        # Download section
-        st.markdown("---")
-        st.markdown("### 📁 Download Complete Project")
-        st.markdown("**Get all source code and deployment files**")
-        
-        # Check if files exist
-        import os
-        zip_path = "/home/runner/workspace/trading_platform_complete.zip"
-        deployment_req_path = "/home/runner/workspace/deployment_requirements.txt"
-        
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            if os.path.exists(zip_path):
-                with open(zip_path, "rb") as zip_file:
-                    st.download_button(
-                        label="📦 Download Complete Project ZIP",
-                        data=zip_file.read(),
-                        file_name="trading_platform_complete.zip",
-                        mime="application/zip",
-                        type="primary",
-                        use_container_width=True
-                    )
-            else:
-                st.error("Project ZIP not available")
-        
-        with col2:
-            if os.path.exists(deployment_req_path):
-                with open(deployment_req_path, "r") as req_file:
-                    st.download_button(
-                        label="📋 Download Requirements.txt",
-                        data=req_file.read(),
-                        file_name="requirements.txt",
-                        mime="text/plain",
-                        type="secondary",
-                        use_container_width=True
-                    )
-            else:
-                st.error("Requirements file not available")
-        
+                       
         with st.expander("📋 Deployment Instructions"):
             st.markdown("""
             **🚀 Quick Deployment Guide:**
